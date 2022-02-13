@@ -1,0 +1,284 @@
+\documentclass[12pt, letterpaper]{article}
+
+\usepackage[letterpaper,left=0.7in,right=0.7in,top=\dimexpr15mm+1.5\baselineskip,bottom=0.7in]{geometry}
+\usepackage{amsmath}
+\usepackage{pxfonts}
+\usepackage[T1]{fontenc}
+
+\linespread{1.5}
+
+\begin{document}
+
+$$ \int \arctan{t} \, dt $$
+
+Let $u = \arctan{t}$, then clearly (make sure you see that it \emph{is} clear) $dv = dt.$ Then
+
+\begin{equation*}
+\begin{aligned}
+u = \arctan{t} \quad &\Rightarrow\quad du = \frac{dt}{1 + t^2} \\
+dv = dt \quad &\Rightarrow\quad v = t
+\end{aligned}
+\end{equation*}
+
+so that
+
+\begin{equation*}
+\begin{aligned}
+\int \arctan{t} \, dt
+  &= uv - \int v \, du \\[0.2in]
+  &= t \arctan{t} - \int \frac{t \, dt}{1 + t^2}
+\end{aligned}
+\end{equation*}
+
+Now use $u$-substitution with
+
+$$ u = 1 + t^2 \quad \Rightarrow \quad \tfrac{1}{2}du = t \, dt $$
+
+which gives
+
+\begin{equation*}
+\begin{aligned}
+\int \arctan{t} \, dt
+  &= t \arctan{t} - \int \frac{t \, dt}{1 + t^2} \\[0.2in]
+  &= t \arctan{t} - \tfrac{1}{2} \int \frac{du}{u} \\[0.2in]
+  &= t \arctan{t} - \tfrac{1}{2} \log{|u|} + C \\[0.2in]
+  &= t \arctan{t} - \tfrac{1}{2} \log{|1 + t^2|} + C.
+\end{aligned}
+\end{equation*}
+
+So we have (Where did the square root come from? Where did the absolute value go?)
+
+\begin{equation*}
+\boxed{
+\int \arctan{t} \, dt
+  = t \arctan{t} - \log{\sqrt{1 + t^2}} + C.
+}
+\end{equation*}
+
+\newpage
+
+$$ \int \cos{\left(\log{t}\right)} \, dt $$
+
+The key observation here is that, since $\frac{d \log{t}}{dt} = \frac{1}{t}$ and $\int dt = t$, those two terms will cancel out when we do our integration by parts (take a second to try to see it). You would have figured this out by experimentation eventually, but better if you could see it before you got started. So now let
+
+\begin{equation*}
+\begin{aligned}
+u = \cos{\left(\log{t}\right)} \quad &\Rightarrow\quad du = -\tfrac{1}{t} \sin{\left( \log{t} \right)} \, dt \\
+dv = dt \quad &\Rightarrow\quad v = t
+\end{aligned}
+\end{equation*}
+
+so that
+
+\begin{equation*}
+\begin{aligned}
+\int \cos{\left(\log{t}\right)} \, dt
+  &= uv - \int v \, du \\[0.2in]
+  &= t\cos{\left(\log{t}\right)} - \int t \left( -\tfrac{1}{t} \sin{\left( \log{t} \right)} \right) \, dt \\[0.2in]
+  &= t\cos{\left(\log{t}\right)} + \int \sin{\left( \log{t} \right)} \, dt \\[0.2in]
+\end{aligned}
+\end{equation*}
+
+Now do another integration by parts with
+
+\begin{equation*}
+\begin{aligned}
+u = \sin{\left(\log{t}\right)} \quad &\Rightarrow\quad du = \tfrac{1}{t} \cos{\left( \log{t} \right)} \, dt \\
+dv = dt \quad &\Rightarrow\quad v = t
+\end{aligned}
+\end{equation*}
+
+to get
+
+\begin{equation*}
+\begin{aligned}
+\int \cos{\left(\log{t}\right)} \, dt
+  &= t\cos{\left(\log{t}\right)} + \int \sin{\left( \log{t} \right)} \, dt \\[0.2in]
+  &= t\cos{\left(\log{t}\right)} + t\sin{\left(\log{t}\right)} - \int \cos{\left( \log{t} \right)} \, dt.
+\end{aligned}
+\end{equation*}
+
+Rearranging gives
+
+\begin{equation*}
+\begin{aligned}
+2\int \cos{\left(\log{t}\right)} \, dt
+  = t\cos{\left(\log{t}\right)} + t\sin{\left(\log{t}\right)}
+\end{aligned}
+\end{equation*}
+
+so that
+
+\begin{equation*}
+\boxed{
+\int \cos{\left(\log{t}\right)} \, dt
+  = \frac{t\cos{\left(\log{t}\right)} + t\sin{\left(\log{t}\right)}}{2}.
+}
+\end{equation*}
+
+\newpage
+
+$$ \int t\sin{t}\cos{t} \, dt $$
+
+This one wouldn't be bad if we could drop the $t$ term in the front. It would "disappear" (by turning into a $1$) if we took it's derivative, so let's make that our $u$ in our integration by parts:
+\begin{equation*}
+\begin{aligned}
+u = t \quad &\Rightarrow \quad du = dt \\
+dv = \sin{t}\cos{t} \, dt \quad &\Rightarrow \quad ???
+\end{aligned}
+\end{equation*}
+
+Now it remains to integrate our $dv$ term. We can do this with $u$-substitution, but we just used $u$ so lets call it $w$-substitution instead to minimize confusion. The derivative of $\sin{t}$ is $\cos{t}$ so let
+
+$$ w = \sin{t} \quad \Rightarrow \quad dw = \cos{t} \, dt $$
+
+Then we have
+
+\begin{equation*}
+\begin{aligned}
+v &= \int dv = \int \sin{t}\cos{t} \, dt \\[0.2in]
+  &= \int w \, dw = \frac{w^2}{2} \\[0.2in]
+  &= \tfrac{1}{2} \sin^2{t}.
+\end{aligned}
+\end{equation*}
+
+Putting it together, our original integration by parts gives
+
+\begin{equation*}
+\begin{aligned}
+\int t\sin{t}\cos{t} \, dt
+  &= uv - \int v \, du \\[0.2in]
+  &= \frac{t}{2} \sin^2{t} - \frac{1}{2} \int \sin{t} \, dt \\[0.2in]
+  &= \frac{t}{2} \sin^2{t} + \frac{1}{2} \cos{t} + C.
+\end{aligned}
+\end{equation*}
+
+Our solution is
+
+\begin{equation*}
+\boxed{
+\int t\sin{t}\cos{t} \, dt
+  = \frac{t\sin^2{t} + \cos{t}}{2} + C.
+}
+\end{equation*}
+
+\newpage
+
+$$ \int \arctan{\frac{1}{t}} \, dt $$
+
+We don't know the integral of this thing, but we \emph{do} know it's derivative, so to use IBP, it would make sense to let $u = \arctan{\frac{1}{t}}$. In this case, looking at our $dv$ term first we get
+
+$$ dv = dt \quad \Rightarrow \quad v = t$$
+
+Since $u = \arctan{\frac{1}{t}}$, by chain rule we get
+
+\begin{equation*}
+\begin{aligned}
+du &= -\frac{1}{t^2} \left( \frac{1}{1 + \frac{1}{t^2}} \right) \, dt
+    = -\frac{1}{t^2} \left( \frac{t^2}{1 + t^2} \right) \, dt
+    = - \frac{dt}{1+t^2}.
+\end{aligned}
+\end{equation*}
+
+Now our IBP gives
+
+\begin{equation*}
+\begin{aligned}
+\int \arctan{\frac{1}{t}} \, dt
+  &= uv - \int v \, du \\[0.2in]
+  &= t \arctan{\frac{1}{t}} - \int t \left( \frac{-dt}{1+t^2} \right) \\[0.2in]
+  &= t \arctan{\frac{1}{t}} + \int \frac{t \, dt}{1 + t^2}
+\end{aligned}
+\end{equation*}
+
+Using $u$-substitution on this last integral we let
+
+$$ u = 1 + t^2 \quad \Rightarrow \quad \frac{du}{2} = t \, dt$$
+
+which gives
+
+\begin{equation*}
+\begin{aligned}
+\int \arctan{\frac{1}{t}} \, dt
+  &= t \arctan{\frac{1}{t}} + \int \frac{t \, dt}{1 + t^2} \\[0.2in]
+  &= t \arctan{\frac{1}{t}} + \frac{1}{2} \int \frac{du}{u} \\[0.2in]
+  &= t \arctan{\frac{1}{t}} + \frac{1}{2} \log{|1 + t^2|} + C. \\[0.2in]
+\end{aligned}
+\end{equation*}
+
+Finally we have
+
+\begin{equation*}
+\boxed{
+\int \arctan{\frac{1}{t}} \, dt
+  = t \arctan{\frac{1}{t}} + \log{\sqrt{1 + t^2}} + C.
+}
+\end{equation*}
+
+\newpage
+
+$$ \int 3^{t}\sin{t} \, dt $$
+
+If you've done a few of these, you'll see that this is a "circular" IBP problem where we will end up with a term that is a factor of the original intergral--similar the ones where we get a "$2I$" in class then divide by $2$ to get our final answer. Terms like $3^t$ work like $e^t$ (\emph{i.e.}, they don't "go away" by integration or differentiation) but with a messy coefficient. So we will use that term as our $dv$.
+
+\begin{equation*}
+\begin{aligned}
+u = \sin{t} \quad &\Rightarrow \quad du = \cos{t} \, dt \\
+dv = 3^t \, dt \quad &\Rightarrow \quad v = \tfrac{1}{\log{3}} \, 3^t
+\end{aligned}
+\end{equation*}
+
+Where $\tfrac{1}{\log{3}}$ is just a number (it's about $0.91$, and you should double check that on your calculator). So now we have
+
+\begin{equation*}
+\begin{aligned}
+\int 3^{t}\sin{t} \, dt
+  &= \tfrac{1}{\log{3}} \, 3^t \sin{t} - \tfrac{1}{\log{3}} \int 3^t \cos{t} \, dt
+\end{aligned}
+\end{equation*}
+
+Now we do another IBP on this right-most integral with
+
+\begin{equation*}
+\begin{aligned}
+u = \cos{t} \quad &\Rightarrow \quad -du = \sin{t} \, dt \\
+dv = 3^t \, dt \quad &\Rightarrow \quad v = \tfrac{1}{\log{3}} \, 3^t
+\end{aligned}
+\end{equation*}
+
+which gives
+
+\begin{equation*}
+\begin{aligned}
+\int 3^{t}\sin{t} \, dt
+  &= \tfrac{1}{\log{3}} \, 3^t \sin{t} - \tfrac{1}{\log{3}} \int 3^t \cos{t} \, dt \\[0.2in]
+  &= \tfrac{1}{\log{3}} \, 3^t \sin{t} - \tfrac{1}{(\log{3})^2} \, 3^t \cos{t} - \tfrac{1}{(\log{3})^2} \int 3^{t}\sin{t} \, dt
+\end{aligned}
+\end{equation*}
+
+Rearranging terms gives
+
+\begin{equation*}
+\begin{aligned}
+\left( 1 + \tfrac{1}{(\log{3})^2} \right) \int 3^{t}\sin{t} \, dt
+  = \tfrac{1}{\log{3}} \, 3^t \sin{t} - \tfrac{1}{(\log{3})^2} \, 3^t \cos{t}
+\end{aligned}
+\end{equation*}
+
+Finally,
+
+\begin{equation*}
+\boxed{
+\int 3^{t}\sin{t} \, dt
+  = \tfrac{\log{3}}{1 + (\log{3})^2} \left( \sin{t} - \tfrac{1}{\log{3}} \cos{t} \right) 3^t
+  \approx 0.5 \left( \sin{t} - 0.91 \cos{t} \right)  3^t  .
+}
+\end{equation*}
+
+\emph{Whew!}
+
+\end{document}
+
+
+
+

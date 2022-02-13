@@ -1,0 +1,44 @@
+\documentclass[12pt, letterpaper]{article}
+
+%\usepackage[letterpaper,left=0.7in,right=0.7in,top=\dimexpr15mm+1.5\baselineskip,bottom=0.7in]{geometry}
+\usepackage{amsmath}
+\usepackage{pxfonts}
+\usepackage[T1]{fontenc}
+
+%\DeclareMathOperator{\tanh}{tanh}
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\csch}{csch}
+%\DeclareMathOperator{\coth}{coth}
+
+\begin{document}
+
+\center{Basic Integration Rules}
+\vspace{0.2in}
+
+
+\begin{enumerate}
+\item $\int u^n \, du = \frac{u^{n+1}}{n+1} + C$, where $n \neq 1$.
+\item $\int \frac{du}{u} = \log|u| + C$.
+\item $\int e^{au} \, du = \frac{1}{a} e^{au} + C$, where $a \in \mathbb{R}$.
+\item $\int a^{bu} \, du = \frac{1}{b \log{a}} a^{bu} + C$, where $a$, $b \in \mathbb{R}$.
+\item $\int \cos{u} \, du = \sin{u} + C$.
+\item $\int \sin{u} \, du = -\cos{u} + C$.
+\item $\int \sec^2{u} \, du = \tan{u} + C$.
+\item $\int \csc^2{u} \, du = -\cot{u} + C$.
+\item $\int \sec{u}\tan{u} \, du = \sec{u} + C$.
+\item $\int \csc{u}\cot{u} \, du = -\csc{u} + C$.
+\item $\int \frac{du}{\sqrt{a^2 - u^2}} = \arcsin{\frac{u}{a}} + C$.
+\item $\int \frac{du}{\sqrt{a^2 - u^2}} = -\arccos{\frac{u}{a}} + C$.
+\item $\int \frac{du}{a^2 + u^2} = \frac{1}{a}\arctan{\frac{u}{a}} + C$.
+
+\item $\int \sinh{u} \, du = \cosh{u} + C.$
+\item $\int \cosh{u} \, du = \sinh{u} + C.$
+\item $\int \sech^2{u} \, du = \tanh{u} + C.$
+\item $\int \csch^2{u} \, du = -\coth{u} + C.$
+\item $\int \sech{u}\tanh{u} \, du = -\sech{u} + C.$
+\item $\int \csch{u}\coth{u} \, du = -\csch{u} + C.$
+
+\end{enumerate}
+
+
+\end{document}

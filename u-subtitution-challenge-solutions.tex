@@ -1,0 +1,132 @@
+\documentclass[12pt, letterpaper]{article}
+
+\usepackage[letterpaper,left=0.7in,right=0.7in,top=\dimexpr15mm+1.5\baselineskip,bottom=0.7in]{geometry}
+\usepackage{amsmath}
+\usepackage{pxfonts}
+\usepackage[T1]{fontenc}
+
+\linespread{1.5}
+
+\begin{document}
+
+$$ \int \frac{dt}{\cos^2{t}\sqrt{1 + \tan{t}}} $$
+
+First, notice that $\frac{1}{\cos{t}} = \sec{t}$ so that 
+
+$$\int \frac{dt}{\cos^2{t}\sqrt{1 + \tan{t}}} = \int \frac{\sec^2{t} \, dt}{\sqrt{1 + \tan{t}}} $$
+
+Then, notice that $\frac{d}{dx}\tan{x} = \sec^2{x}$ and realize that you should choose
+$$u = 1 + \tan{t} \qquad\Rightarrow\qquad du = \sec^2{t} \, dt.$$
+
+Now substituting $u$ and $du$ into the integral, we get
+\begin{equation}
+\begin{aligned}
+\int \frac{dt}{\cos^2{t}\sqrt{1 + \tan{t}}}
+   &= \int \frac{\sec^2{t} \, dt}{\sqrt{1 + \tan{t}}} \\[0.2in]
+   &= \int \frac{du}{\sqrt{u}} \\[0.2in]
+   &= \int u^{-1/2} \, du \\[0.2in]
+   &= \frac{u^{1/2}}{1/2} + C \\[0.2in]
+   &= 2u^{1/2} + C \\[0.2in]
+   &= 2\sqrt{1 + \tan{t}} + C.
+\end{aligned}
+\end{equation}
+
+\newpage
+
+$$ I = \int t \left( 3t + 8 \right) \, dt $$
+
+This was a "trick" question, I guess. You could use substitution to try to solve this, but there is a much easier way:
+
+\begin{equation}
+\begin{aligned}
+\int t \left( 3t + 8 \right) \, dt
+  &= \int 3t^2 + 8t \, dt \\[0.2in]
+  &= \int 3t^2 \, dt + \int 8t \, dt \\[0.2in]
+  &= 3 \int t^2 \, dt + 8 \int t \, dt \\[0.2in]
+  &= 3 \frac{t^3}{3} + 8 \frac{t^2}{2} + C \\[0.2in]
+  &= t^3 + 4t^2 + C.
+\end{aligned}
+\end{equation}
+
+\newpage
+
+$$ \int \frac{t + \log{t}}{t} \, dt $$
+
+First, break up the numerator and use the fact that $\int a(x) + b(x) dx = \int a(x) dx + \int b(x) dx$ to get
+
+\begin{equation}
+\begin{aligned}
+\int \frac{t + \log{t}}{t} \, dt
+  &= \int 1 + \frac{\log{t}}{t} \, dt \\[0.2in]
+  &= \int dt + \int \frac{\log{t}}{t} \, dt.
+\end{aligned}
+\end{equation}
+
+Then choosing
+
+$$u = \log{t} \qquad\Rightarrow\qquad du = \frac{dt}{t}$$
+
+we see that
+
+\begin{equation}
+\begin{aligned}
+\int \frac{t + \log{t}}{t} \, dt
+  &= \int 1 + \frac{\log{t}}{t} \, dt \\[0.2in]
+  &= \int dt + \int \frac{\log{t}}{t} \, dt \\[0.2in]
+  &= t + \int u \, du \\[0.2in]
+  &= t + \tfrac{1}{2}u^2 + C \\[0.2in]
+  &= t + \tfrac{1}{2}\left(\log{t}\right)^2 + C.
+\end{aligned}
+\end{equation}
+
+\newpage
+
+$$ \int \sec^2{t}\tan^3{t} \, dt $$
+
+First, as in the first problem above, notice that $\frac{d}{dx}\tan{x} = \sec^2{x}$.
+Now choose
+
+$$u = \tan{t} \qquad\Rightarrow\qquad du = \sec^2{t} \, dt.$$
+
+Substituting now gives
+
+\begin{equation}
+\begin{aligned}
+\int \sec^2{t}\tan^3{t} \, dt
+  &= \int u^3 \, du \\[0.2in]
+  &= \frac{u^4}{4} + C \\[0.2in]
+  &= \tfrac{1}{4}\tan^4{t} + C.
+\end{aligned}
+\end{equation}
+
+\newpage
+
+$$ \int \sin{t}\sin{(\cos{t})} \, dt $$
+
+First, don't get sucked into the scary-looking nested trig function. Instead, realize that if we wanted $du$ to be $\sin{t} \, dt$ then we would need $u$ to be $-\cos{t}$. Let's try just $\cos{t}$ to get
+
+$$u = \cos{t} \quad\Rightarrow\quad du = -\sin{t} \, dt \quad\Rightarrow -du = (-1)du = \sin{t} \, dt.$$
+
+Substituting gives
+
+\begin{equation}
+\begin{aligned}
+\int \sin{t}\sin{(\cos{t})} \, dt
+  &= \int \sin{(\cos{t})}\sin{t} \, dt \\[0.2in]
+  &= \int \sin{(u)} \, (-1)du \\[0.2in]
+  &= \int -\sin{(u)} \, du \\[0.2in]
+  &= \cos{u} + C \\[0.2in]
+  &= \cos{(\cos{t})} + C.
+\end{aligned}
+\end{equation}
+
+\end{document}
+
+
+
+
+
+
+
+
+

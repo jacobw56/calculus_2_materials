@@ -1,0 +1,315 @@
+\documentclass[12pt, letterpaper]{article}
+
+\usepackage[letterpaper,left=0.7in,right=0.7in,top=\dimexpr15mm+1.5\baselineskip,bottom=0.7in]{geometry}
+\usepackage{amsmath}
+\usepackage{pxfonts}
+\usepackage[T1]{fontenc}
+
+\begin{document}
+
+$$ \int \sin{\sqrt{t}} \, dt $$
+
+The thing to see is that we would love for this to be more like $\sin{t}$ than $\sin{\sqrt{t}}$. We can make that happen by substituting, say $w = \sqrt{t}$, where I use $w$ instead of $u$ because I'm going to use a $u$ later for integration by parts (IBP) and I want to keep things clear. So we have
+
+\begin{equation*}
+\begin{aligned}
+w^2 = t \quad &\Rightarrow \quad 2w \,dw = dt
+\end{aligned}
+\end{equation*}
+
+Substituting these into the original integral gives
+
+\begin{equation*}
+\begin{aligned}
+\int \sin{\sqrt{t}} \, dt
+  &= 2\int w\sin{w} \, dw
+\end{aligned}
+\end{equation*}
+
+You should be saying to yourself, "Self, this looks like a textbook IBP problem!" And you would be correct :-) Specifically, you should see that if we let $u = w$, then that term will "disappear" in the integral on the right hand side of the IBP formula. Let's watch it happen. Let
+
+\begin{equation*}
+\begin{aligned}
+u = w \quad &\Rightarrow \quad du = dw \\
+dv = \sin{w}\, dw \quad &\Rightarrow \quad v = -\cos{w}
+\end{aligned}
+\end{equation*}
+
+which, using the IBP formula, gives us
+
+\begin{equation*}
+\begin{aligned}
+\int \sin{\sqrt{t}} \, dt
+  &= 2\int w\sin{w} \, dw \\[0.2in]
+  &= 2 \left( w \left( -\cos{w} \right) - \int \left( -\cos{w} \right) \, dw \right) \\[0.2in]
+  &= -2w\cos{w} + 2\int \cos{w} \, dw \\[0.2in]
+  &= -2w\cos{w} + 2 \sin{w} + C \\[0.2in]
+  &= -2\sqrt{t}\cos{\sqrt{t}} + 2 \sin{\sqrt{t}} + C.
+\end{aligned}
+\end{equation*}
+
+Finally, we have
+
+\begin{equation*}
+\boxed
+{
+\int \sin{\sqrt{t}} \, dt
+  = 2 \sin{\sqrt{t}} - 2\sqrt{t}\cos{\sqrt{t}} + C.
+}
+\end{equation*}
+
+
+\newpage
+
+$$ \int \frac{\arctan{x}}{{x^2}} \, dx $$
+
+This type of integral has a tendency to scare students into panic, but it's not too hard if you understand one key thing. You are likely scared because you don't know the \emph{integral} of $\arctan{x}$, and certainly not when it's divided by some power of $x$, but you \emph{do} know the \emph{derivative} of $\arctan{x}$! This fact should \emph{scream} to you to use IBP. You can set $u = \arctan{x}$, then you don't ever have to worry about integrating that part of it. Let's see it in action.
+
+\begin{equation*}
+\begin{aligned}
+u = \arctan{x} \quad &\Rightarrow \quad du = \frac{dx}{1 + x^2} \\
+dv = \frac{dx}{x^2} \quad &\Rightarrow \quad v = \frac{-1}{x}
+\end{aligned}
+\end{equation*}
+
+Using the IBP formula gives
+
+\begin{equation*}
+\begin{aligned}
+\int \frac{\arctan{x}}{{x^2}} \, dx
+  &= \frac{-1}{x}\arctan{x} + \int \frac{dx}{x(1 + x^2)} \\[0.2in]
+\end{aligned}
+\end{equation*}
+
+From here you have options. You could use partial fraction decomposition, but I'm going to go with trig substitution. Let
+
+\begin{equation*}
+\begin{aligned}
+x = \tan{\theta} \quad &\Rightarrow \quad dx = \sec^2{\theta} \, d\theta \\
+\end{aligned}
+\end{equation*}
+
+Then we have
+
+\begin{equation*}
+\begin{aligned}
+\int \frac{\arctan{x}}{{x^2}} \, dx
+  &= \frac{-1}{x}\arctan{x} + \int \frac{dx}{x(1 + x^2)} \\[0.2in]
+  &= \frac{-1}{x}\arctan{x} + \int \frac{1}{\tan{\theta}(1 + \tan^2{\theta})} \sec^2{\theta} \, d\theta \\[0.2in]
+  &= \frac{-1}{x}\arctan{x} + \int \frac{\sec^2{\theta}}{\tan{\theta}\sec^2{\theta}} \, d\theta \\[0.2in]
+  &= \frac{-1}{x}\arctan{x} + \int \frac{\cos{\theta}}{\sin{\theta}} \, d\theta \\[0.2in]
+  &= \frac{-1}{x}\arctan{x} + \log{|\sin{\theta}|} + C \\[0.2in]
+  &= \frac{-1}{x}\arctan{x} + \log{\left| \frac{x}{\sqrt{1+x^2}} \right|} + C
+\end{aligned}
+\end{equation*}
+
+Where the last few lines use $u$-sub and the unit triangle. So we have
+
+\begin{equation*}
+\boxed
+{
+\int \frac{\arctan{x}}{{x^2}} \, dx
+  = \frac{-1}{x}\arctan{x} + \log{\left| \frac{x}{\sqrt{1+x^2}} \right|} + C
+}
+\end{equation*}
+
+
+
+\newpage
+
+$$ \int x \sqrt{2 - \sqrt{1 + x^2}} \, dx $$
+
+Another scary-looking thing because of the nested square roots. The thing I do is to ask myself what I would want to clean those radicals up, starting from the innermost one. In this case, if $1 + x^2$ were just something squared, then I would be rid of that radical. So let's do it. Let
+
+\begin{equation*}
+\begin{aligned}
+w^2 = 1 + x^2  \quad &\Rightarrow \quad w\, dw = x \, dx
+\end{aligned}
+\end{equation*}
+
+Substituting this in gives
+
+\begin{equation*}
+\begin{aligned}
+\int x \sqrt{2 - \sqrt{1 + x^2}} \, dx
+  &= \int w\sqrt{2 - w} \, dw
+\end{aligned}
+\end{equation*}
+
+Well... much better, but not quite there. I'd like to get rid of that last square root. If only I had something that, when it was squared, equaled $2 - w$... Let
+
+\begin{equation*}
+\begin{aligned}
+z^2 = 2 - w  \quad &\Rightarrow \quad -2z\, dz = dw
+\end{aligned}
+\end{equation*}
+
+then we get
+
+\begin{equation*}
+\begin{aligned}
+\int x \sqrt{2 - \sqrt{1 + x^2}} \, dx
+  &= \int w\sqrt{2 - w} \, dw \\[0.2in]
+  &= \int (2 - z^2)\sqrt{z^2} (-2z \, dz) \\[0.2in]
+  &= -2 \int (2 - z^2)z^2 \, dz \\[0.2in]
+  &= 2 \int z^4 \, dz - 4 \int z^2 \, dz .
+\end{aligned}
+\end{equation*}
+
+And now it's easy
+
+\begin{equation*}
+\begin{aligned}
+\int x \sqrt{2 - \sqrt{1 + x^2}} \, dx
+  &= 2 \int z^4 \, dz - 4 \int z^2 \, dz \\[0.2in]
+  &= \tfrac{2}{5} (2 - w)^{5/2} - \tfrac{4}{3} (2 - w)^{3/2} + C \\[0.2in]
+  &= \tfrac{2}{5} (2 - 1 + x^2)^{5/2} - \tfrac{4}{3} (2 - 1 + x^2)^{3/2} + C.
+\end{aligned}
+\end{equation*}
+
+Finally,
+
+\begin{equation*}
+\boxed
+{
+\int x \sqrt{2 - \sqrt{1 + x^2}} \, dx
+  = \tfrac{2}{5} (1 + x^2)^{5/2} - \tfrac{4}{3} (1 + x^2)^{3/2} + C.
+}
+\end{equation*}
+
+
+
+\newpage
+
+$$ \int \frac{dx}{\sqrt{x} + x\sqrt{x}} $$
+
+First, I find this visually awful, so let's rewrite it.
+
+$$ \int \frac{dx}{\sqrt{x} + x\sqrt{x}} = \int \frac{dx}{\sqrt{x} (1 + x)} $$
+
+Now taking a cue from the above solution, put
+
+\begin{equation*}
+\begin{aligned}
+u^2 = x  \quad &\Rightarrow \quad 2u \, du = dx
+\end{aligned}
+\end{equation*}
+
+so that
+
+\begin{equation*}
+\begin{aligned}
+\int \frac{dx}{\sqrt{x} (1 + x)}
+  &= \int \frac{2u \, du}{u (1 + u^2)} = 2 \int \frac{du}{1 + u^2}.
+\end{aligned}
+\end{equation*}
+
+Now we are left with an easy trig-sub problem. So let
+
+\begin{equation*}
+\begin{aligned}
+u = \tan{\theta}  \quad &\Rightarrow \quad du = \sec^2{\theta}\, d\theta
+\end{aligned}
+\end{equation*}
+
+which gives
+
+\begin{equation*}
+\begin{aligned}
+\int \frac{dx}{\sqrt{x} (1 + x)}
+  &= 2 \int \frac{du}{1 + u^2} \\[0.2in]
+  &= 2 \int \frac{\sec^2{\theta}\, d\theta}{1 + \tan^2{\theta}} \\[0.2in]
+  &= 2 \int \frac{\sec^2{\theta}\, d\theta}{\sec^2{\theta}} \\[0.2in]
+  &= 2 \int d\theta \\[0.2in]
+  &= 2 \theta + C \\[0.2in]
+  &= 2 \arctan{u} + C \\[0.2in]
+  &= 2 \arctan{\sqrt{x}} + C.
+\end{aligned}
+\end{equation*}
+
+We have
+
+\begin{equation*}
+\boxed
+{
+\int \frac{dx}{\sqrt{x} (1 + x)}
+  = 2 \arctan{\sqrt{x}} + C.
+}
+\end{equation*}
+
+
+\newpage
+
+$$ \int \frac{dx}{\sqrt{\sqrt{x} + 1}} $$
+
+Just like the two above, we want to nix the radicals. So two substitutions will do it. Let
+
+\begin{equation*}
+\begin{aligned}
+u^2 = x  \quad &\Rightarrow \quad 2u \, du = dx
+\end{aligned}
+\end{equation*}
+
+which gives
+
+\begin{equation*}
+\begin{aligned}
+\int \frac{dx}{\sqrt{\sqrt{x} + 1}}
+  &= \int \frac{\quad 2u \, du}{\sqrt{u + 1}}.
+\end{aligned}
+\end{equation*}
+
+Now put
+
+\begin{equation*}
+\begin{aligned}
+w^2 = u + 1  \quad &\Rightarrow \quad 2w\, dw = du
+\end{aligned}
+\end{equation*}
+
+which gives
+
+\begin{equation*}
+\begin{aligned}
+\int \frac{dx}{\sqrt{\sqrt{x} + 1}}
+  &= \int \frac{\quad 2u \, du}{\sqrt{u + 1}} \\[0.2in]
+  &= \int \frac{\quad 2(w^2 - 1)(2w\, dw)}{w} \\[0.2in]
+  &= 4 \int (w^2 - 1) \, dw \\[0.2in]
+  &= 4 \int w^2 \, dw - 4 \int dw \\[0.2in]
+  &= \tfrac{4}{3} w^3 - 4 w + C \\[0.2in]
+  &= \tfrac{4}{3} (u + 1)^{3/2} - 4(u + 1)^{1/2} + C \\[0.2in]
+  &= \tfrac{4}{3} \left( \sqrt{x} + 1 \right)^{3/2} - 4 \left( \sqrt{x} + 1 \right)^{1/2} + C.
+\end{aligned}
+\end{equation*}
+
+Finally,
+
+\begin{equation*}
+\boxed
+{
+\int \frac{dx}{\sqrt{\sqrt{x} + 1}}
+  = \tfrac{4}{3} \sqrt{\sqrt{x} + 2} \left( \sqrt{x} -2 \right) + C.
+}
+\end{equation*}
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,246 @@
+\documentclass[12pt, letterpaper]{article}
+
+\usepackage[letterpaper,left=0.7in,right=0.7in,top=\dimexpr15mm+1.5\baselineskip,bottom=0.7in]{geometry}
+\usepackage{amsmath}
+\usepackage{pxfonts}
+\usepackage[T1]{fontenc}
+
+\begin{document}
+
+$$ \int \frac{d\theta}{\cos{\theta} - 1} $$
+
+The "trick" here is to (a) understand that you can't handle the denominator without a $\sin$ term around to use with $u$-sub or IBP, and that (b) to get what you want (a $\cos^2$ term you can turn into a $sin^2$ term) you could multiply the numerator and denominator by the "conjugate" of the denominator. You would have used this process long ago to "rationalize the denominator" (Google it if you've forgotten). So we get
+
+\begin{equation*}
+\begin{aligned}
+\int \frac{d\theta}{\cos{\theta} - 1}
+  &= \int \frac{1}{\cos{\theta} - 1} \frac{\cos{\theta} + 1}{\cos{\theta} + 1} \, d\theta \\[0.2in]
+  &= \int \frac{\cos{\theta} + 1}{\cos^2{\theta} - 1} \, d\theta \\[0.2in]
+  &= -\int \frac{\cos{\theta} + 1}{\sin^2{\theta}} \, d\theta \\[0.2in]
+  &= -\int \frac{\cos{\theta} \, d\theta}{\sin^2{\theta}} - \int \csc^2{\theta} \, d\theta.
+\end{aligned}
+\end{equation*}
+
+For the first integral we can use $u$-sub with $u = \sin{\theta}$ so that $du = \cos{\theta} \, d\theta$. For the second integral notice that $\frac{d}{d\theta}\cot{\theta} = -\csc^2{\theta}$. So we have
+
+\begin{equation*}
+\begin{aligned}
+\int \frac{d\theta}{\cos{\theta} - 1}
+  &= -\int \frac{\cos{\theta} \, d\theta}{\sin^2{\theta}} - \int \csc^2{\theta} \, d\theta \\[0.2in]
+  &= -\int \frac{du}{u^2} + \int -\csc^2{\theta} \, d\theta \\[0.2in]
+  &= \frac{1}{\sin{\theta}} + \cot{\theta} + C \\[0.2in]
+  &= \csc{\theta}\left( 1 + \cos{\theta} \right) + C.
+\end{aligned}
+\end{equation*}
+
+And so we have
+
+\begin{equation*}
+\boxed
+{
+\int \frac{d\theta}{\cos{\theta} - 1}
+  = \csc{\theta}\left( 1 + \cos{\theta} \right) + C.
+}
+\end{equation*}
+
+
+\newpage
+
+$$ \int \frac{dt}{1 + e^t} $$
+
+This is a nice $u$-sub problem because it makes you use what you already know in a bunch of different "shapes." Let $u = 1 + e^t$. Then we have
+
+\begin{equation*}
+\begin{aligned}
+u = 1 + e^t \quad &\Rightarrow \quad e^t = u - 1 \\
+du = e^t \, dt \quad &\Rightarrow \quad dt = \frac{du}{e^t} = \frac{du}{u - 1}
+\end{aligned}
+\end{equation*}
+
+Substituting into the integral we get
+
+\begin{equation*}
+\begin{aligned}
+\int \frac{1}{1 + e^t} \, dt
+  &= \int \frac{1}{u} \frac{du}{u - 1} \\[0.2in]
+  &= \int \frac{1}{u(u-1)} \, du \\[0.2in]
+  &= \int \frac{1 - u + u}{u(u-1)} \, du \\[0.2in]
+  &= -\int \frac{u - 1}{u(u-1)} \, du + \int \frac{u}{u(u-1)} \, du  \\[0.2in]
+  &= -\int \frac{du}{u} + \int \frac{du}{(u-1)}  \\[0.2in]
+  &= -\log{\left( 1 + e^t \right)} + \log{\left( e^t  \right)} + C \\[0.2in]
+  &= \log{\left( \frac{e^t}{1 + e^t} \right)} + C.
+\end{aligned}
+\end{equation*}
+
+So we have
+
+\begin{equation*}
+\boxed
+{
+\int \frac{1}{1 + e^t} \, dt
+  = \log{\left( \frac{e^t}{1 + e^t} \right)} + C.
+}
+\end{equation*}
+
+
+\newpage
+
+$$ \int \frac{\sin^3{\left( \sqrt{\theta} \right)}}{\sqrt{\theta}} \, d\theta $$
+
+This is a scary-looking $u$-sub/trig integral problem, but it's really quite simple. If we take $u = \sqrt{\theta}$ then we get
+
+\begin{equation*}
+\begin{aligned}
+u = \sqrt{\theta} \quad &\Rightarrow \quad 2 du = \frac{d\theta}{\sqrt{\theta}}
+\end{aligned}
+\end{equation*}
+
+Substituting these in to the original integral, we get
+
+\begin{equation*}
+\begin{aligned}
+\int \frac{\sin^3{\left( \sqrt{\theta} \right)}}{\sqrt{\theta}} \, d\theta
+  &= 2\int \sin^3{u}\, du.
+\end{aligned}
+\end{equation*}
+
+Now for the remaining trig integral, we use two factors of $\sin{u}$ to use with the circle identity and the last one will be left over for another $u$-sub, or in this case since we already have a $u$ we'll call it $w$-sub:
+
+\begin{equation*}
+\begin{aligned}
+\int \frac{\sin^3{\left( \sqrt{\theta} \right)}}{\sqrt{\theta}} \, d\theta
+  &= 2\int \sin^3{u}\, du \\[0.2in]
+  &= 2\int \sin^2{u}\sin{u} \, du \\[0.2in]
+  &= 2\int \left( 1 - \cos^2{u} \right) \sin{u} \, du \\[0.2in]
+  &= 2\int \sin{u} \, du + 2\int \cos^2{u} \left( -\sin{u} \, du\right) \\[0.2in]
+  &= 2\int \sin{u} \, du + 2\int w^2 \, dw \\[0.2in]
+  &= -2cos{u} + \tfrac{2}{3} w^3 + C \\[0.2in]
+  &= -2\cos{\sqrt{\theta}} + \tfrac{2}{3}\cos^3{\sqrt{\theta}} + C.
+\end{aligned}
+\end{equation*}
+
+This gives
+
+\begin{equation*}
+\boxed
+{
+\int \frac{\sin^3{\left( \sqrt{\theta} \right)}}{\sqrt{\theta}} \, d\theta
+  = -2\cos{\sqrt{\theta}} + \tfrac{2}{3}\cos^3{\sqrt{\theta}} + C.
+}
+\end{equation*}
+
+
+\newpage
+
+$$ \int \phi \tan^2{\left( \phi  \right)} \, d\phi $$
+
+This is an IBP + trig integral problem. We want to get rid of that pesky factor of $\phi$, so we let
+
+\begin{equation*}
+\begin{aligned}
+u = \phi \quad &\Rightarrow \quad du = d\phi \\
+dv = \tan^2{\left( \phi  \right)} \, d\phi \quad &\Rightarrow \quad v = ??
+\end{aligned}
+\end{equation*}
+
+Now we need to integrate $\tan^2{\phi}$, but this is no problem since we know that $\frac{d}{d\phi}\tan{\theta} = \sec^2{\phi}$
+
+\begin{equation*}
+\begin{aligned}
+\int \tan^2{\left( \phi  \right)} \, d\phi
+  &= \int \left( \sec^2{\phi} - 1 \right) \, d\phi \\[0.2in]
+  &= \int \sec^2{\phi} \, d\phi - \int d\phi = \tan{\phi} - \phi = v.
+\end{aligned}
+\end{equation*}
+
+Now we can finish the integration by parts:
+
+\begin{equation*}
+\begin{aligned}
+\int \phi \tan^2{\left( \phi  \right)} \, d\phi
+  &= uv - \int v \, du \\[0.2in]
+  &= \phi\tan{\phi} - \phi^2 - \int \left( \tan{\phi} - \phi \right) \, d\phi \\[0.2in]
+  &= \phi\tan{\phi} - \phi^2 - \int \tan{\phi}\, d\phi - \int \phi \, d\phi \\[0.2in]
+  &= \phi\tan{\phi} - \phi^2 + \log{|\cos{\phi}|} + \tfrac{1}{2}\phi^2 + C \\[0.2in]
+  &= \phi\tan{\phi} + \log{|\cos{\phi}|} - \tfrac{1}{2}\phi^2 + C.
+\end{aligned}
+\end{equation*}
+
+Giving
+
+\begin{equation*}
+\boxed
+{
+\int \phi \tan^2{\left( \phi  \right)} \, d\phi
+  = \phi\tan{\phi} + \log{|\cos{\phi}|} - \tfrac{1}{2}\phi^2 + C.
+}
+\end{equation*}
+
+
+\newpage
+
+$$ \int \phi \sin^2{\left( \phi^2 \right)} \, d\phi $$
+
+You \emph{should} see that this is a $u$-sub problem (although it takes a lot of practice to get there) because we have a $\phi^2$ in the $\sin^2$ and a $\phi$ out in front of it. We have
+
+\begin{equation*}
+\begin{aligned}
+u = \phi^2 \quad &\Rightarrow \quad \tfrac{1}{2}du = \phi d\phi.
+\end{aligned}
+\end{equation*}
+
+Substitution and the double angle formula give
+
+\begin{equation*}
+\begin{aligned}
+\int \phi \sin^2{\left( \phi^2 \right)} \, d\phi
+  &= \tfrac{1}{2} \int \sin^2{u} \, du \\[0.2in]
+  &= \tfrac{1}{4} \int \left( 1 - \cos{2u} \right) \, du \\[0.2in]
+  &= \tfrac{1}{4} \int du - \tfrac{1}{4} \int \cos{2u}\, du \\[0.2in]
+  &= \tfrac{1}{4} u - \tfrac{1}{8} \sin{\left( 2u \right)} + C \\[0.2in]
+  &= \tfrac{1}{4} \phi^2 - \tfrac{1}{8} \sin{\left( 2\phi^2 \right)} + C.
+\end{aligned}
+\end{equation*}
+
+We have
+
+\begin{equation*}
+\boxed
+{
+\int \phi \sin^2{\left( \phi^2 \right)} \, d\phi
+  = \tfrac{1}{4} \phi^2 - \tfrac{1}{8} \sin{\left( 2\phi^2 \right)} + C.
+}
+\end{equation*}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
